@@ -63,5 +63,5 @@ async function refreshDiscord() {
 async function refreshStats() {if(document.hidden)return;await Promise.allSettled([refreshMinecraft(), refreshDiscord()]);}
 refreshStats();setInterval(refreshStats,refreshMs);
 if(cfg.discordInvite && /^https:\/\/discord\.(gg|com)\//.test(cfg.discordInvite)){
-  document.querySelectorAll('a[href="https://discord.gg/GJRXZk8jEn"]').forEach(a=>a.href=cfg.discordInvite);
+  document.querySelectorAll('a[href="https://discord.gg/UeGzQjRebw"]').forEach(a=>a.href=cfg.discordInvite);
 }
