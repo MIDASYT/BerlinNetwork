@@ -7,6 +7,6 @@ window.BERLIN_CONFIG = {
   minecraftIp: "", // p. ej. "play.tudominio.com"; vacío = no configurada
   servers: [], // p. ej. [{ name: "Survival", host: "survival.ejemplo.com" }, { name: "Box PvP", host: "box.ejemplo.com" }]
   discordGuildId: "", // p. ej. "123456789012345678"
-  discordInvite: "https://discord.gg/GJRXZk8jEn",
+  discordInvite: "https://discord.gg/UeGzQjRebw",
   refreshSeconds: 90
 };
