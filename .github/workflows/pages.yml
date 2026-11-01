@@ -1,0 +1,83 @@
+name: Berlin Network · public site and Discord presence
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: berlin-network-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout site
+        uses: actions/checkout@v4
+
+      - name: Obtain public approximate Discord online count
+        env:
+          DISCORD_INVITE_CODE: UeGzQjRebw
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import datetime
+          import json
+          import os
+          import urllib.request
+
+          code = os.environ["DISCORD_INVITE_CODE"]
+          result = {"online": None, "updatedAt": None}
+          request = urllib.request.Request(
+              f"https://discord.com/api/v10/invites/{code}?with_counts=true",
+              headers={
+                  "Accept": "application/json",
+                  "User-Agent": "BerlinNetworkStatus/1.0"
+              },
+          )
+          try:
+              with urllib.request.urlopen(request, timeout=20) as response:
+                  invite = json.load(response)
+              count = invite.get("approximate_presence_count")
+              if type(count) is not int or count < 0:
+                  raise ValueError("Discord did not provide an online count.")
+              result = {
+                  "online": count,
+                  "updatedAt": datetime.datetime.now(datetime.timezone.utc).isoformat()
+              }
+          except Exception as exc:
+              print(f"Public Discord count temporarily unavailable: {type(exc).__name__}")
+          with open("discord-presence.json", "w", encoding="utf-8") as output:
+              json.dump(result, output, ensure_ascii=False, separators=(",", ":"))
+          PY
+
+      - name: Prepare static files
+        shell: bash
+        run: |
+          mkdir -p _site
+          cp -a index.html reglas.html styles.css script.js site-config.js discord-presence.json assets _site/
+          touch _site/.nojekyll
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Publish site
+        id: deployment
+        uses: actions/deploy-pages@v4

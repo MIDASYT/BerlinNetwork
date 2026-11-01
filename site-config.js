@@ -5,7 +5,6 @@
 */
 window.BERLIN_CONFIG = Object.freeze({
   minecraftIp: 'berlin.hidenplay.net',
-  discordGuildId: '1566195525961785505',
   discordInvite: 'https://discord.gg/UeGzQjRebw',
   modalities: {
     survival: { name: 'Survival', host: 'survival-b.hidenplay.net' },

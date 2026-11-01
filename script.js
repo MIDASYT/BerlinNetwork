@@ -68,13 +68,16 @@
    }
  }
  async function updateDiscord(){
-   const id=String(cfg.discordGuildId||'');
-   if(!/^\d{17,22}$/.test(id)){el('discord-online').textContent='No disponible';return;}
-   try{
-     const r=await getJson(`https://discord.com/api/guilds/${id}/widget.json`);
-     const n=numberOrNull(r?.presence_count);
-     el('discord-online').textContent=n===null?'No disponible':n+' conectados';
-   }catch{el('discord-online').textContent='No disponible';}
+   const value=el('discord-online');
+   if(!value)return;
+   try {
+     // Only an anonymous approximate count is served. No Discord guild ID is used.
+     const stats=await getJson('./discord-presence.json?refresh='+Date.now());
+     const count=numberOrNull(stats?.online);
+     const fetchedAt=Date.parse(stats?.updatedAt||'');
+     if(count===null||!Number.isFinite(fetchedAt)||fetchedAt>Date.now()+300000||Date.now()-fetchedAt>60*60*1000)throw Error('Discord statistics unavailable or stale');
+     value.textContent='≈ '+count+' conectados';
+   } catch {value.textContent='No disponible';}
  }
  async function refresh(){if(document.hidden)return;await Promise.allSettled([updateStatus(),updateDiscord()]);}
  refresh();setInterval(refresh,Math.max(60,Number(cfg.refreshSeconds)||90)*1000);
