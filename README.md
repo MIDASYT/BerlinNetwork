@@ -19,7 +19,7 @@ Repositorio: `MIDASYT/BerlinNetwork`. GitHub → Settings → Pages → Deploy f
 
 El sitio consulta `mcstatus.io` para verificar la IP principal y cada modalidad pública, y el widget público de Discord para su contador de conectados. La consulta a Discord requiere activar el **widget del servidor** en los ajustes de Discord. Si no está habilitado, se muestra «No disponible».
 
-**Dato que todavía no puede resolverse automáticamente:** las direcciones de acceso público de Survival y Box PvP por separado. No existe una API global de Auric Network. En `site-config.js`, `modalities.survival.host` y `modalities.box.host` deben completarse cuando estén disponibles las direcciones o puertos de consulta de cada servidor. **No introducir la IP pública general en ambos campos**: sumaría duplicados. La web nunca inventa cifras: muestra «En desarrollo» hasta que las modalidades estén configuradas, y solo calcula el total al contar ambos servidores.
+**Direcciones configuradas:** Survival = `survival-b.hidenplay.net`; Box PvP = `boxpvp-b.hidenplay.net`. Se consultan por separado y el total de Berlin Network es la suma de sus jugadores conectados, sin contar otra vez la IP principal `berlin.hidenplay.net`. Cuando las modalidades no respondan, la web mostrará el estado correspondiente sin inventar cifras. Al estar todavía en desarrollo, pueden aparecer desconectadas hasta su lanzamiento.
 
 ## Recursos
 
@@ -27,7 +27,7 @@ El sitio consulta `mcstatus.io` para verificar la IP principal y cada modalidad 
 - `reglas.html`: redirige enlaces antiguos al reglamento dentro de la página principal.
 - `styles.css`: diseño y animaciones.
 - `script.js`: menú, fondos, copiar IP y estado.
-- `site-config.js`: IP, Discord y direcciones de modalidades cuando estén disponibles.
+- `site-config.js`: IP general, Discord y direcciones independientes de ambas modalidades.
 - `assets/`: recursos aportados para Berlin Network.
 
 No es necesario ejecutar scripts de compilación ni introducir claves.
