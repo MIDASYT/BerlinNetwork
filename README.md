@@ -10,7 +10,7 @@ Repositorio: `MIDASYT/BerlinNetwork`. GitHub → Settings → Pages → Deploy f
 
 - IP de conexión: `berlin.hidenplay.net`
 - Discord ID: `1566195525961785505`
-- Invitación Discord: `https://discord.gg/GJRXZk8jEn`
+- Invitación Discord: `https://discord.gg/UeGzQjRebw`
 - Survival y Box PvP aún están en desarrollo.
 - En la web aparecen todos los apartados, incluyendo el reglamento entero, desplazándose verticalmente. El menú navega por anclas.
 - El primer screenshot se utiliza íntegro en el área de lobby/modalidades, nunca como fondo. Los otros tres alternan de forma suave en la portada, sin segunda animación de salida.
