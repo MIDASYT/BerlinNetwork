@@ -9,7 +9,7 @@
 window.BERLIN_CONFIG = Object.freeze({
   minecraftIp: 'berlin.hidenplay.net',
   discordGuildId: '1566195525961785505',
-  discordInvite: 'https://discord.gg/GJRXZk8jEn',
+  discordInvite: 'https://discord.gg/UeGzQjRebw',
   modalities: {
     survival: { name: 'Survival', host: null },
     box: { name: 'Box PvP', host: null }
