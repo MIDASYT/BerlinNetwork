@@ -1,34 +1,33 @@
 # Berlin Network — Web oficial
 
-Sitio estático, listo para **GitHub Pages**, sin frameworks ni procesos de compilación. Incluye portada animada, imágenes reales de Berlin Network, modalidades, Discord, reglamento completo y consultas opcionales de estado.
+Web estática de una sola página lista para GitHub Pages. Usa Inter y Libre Baskerville, las mismas familias tipográficas de la web de Auric Turrets. Sin frameworks, sin backend y sin tokens de acceso. No incluye secciones publicitarias, noticias o anuncios.
 
-## Publicar con GitHub Pages
+## Publicación
 
-1. Sube **todos los archivos y la carpeta `assets/`** a la raíz de la rama `main` del repositorio `MIDASYT/BerlinNetwork`.
-2. En GitHub: **Settings → Pages → Build and deployment → Deploy from a branch**. Elige `main` y `/ (root)` y guarda.
-3. La dirección prevista para un repositorio de proyecto público es `https://midasyt.github.io/BerlinNetwork/` (salvo que ya hayas configurado otro dominio o la URL cambie).
-4. Cuando tengas la IP, edita `site-config.js`.
+Repositorio: `MIDASYT/BerlinNetwork`. GitHub → Settings → Pages → Deploy from a branch → `main` → `/ (root)`.
 
-## Configurar información en directo
+## Información establecida
 
-Abre **`site-config.js`** y define:
-- `minecraftIp`: la IP/host y puerto (si no es 25565) que deben copiar los usuarios. Déjalo vacío si no se ha publicado.
-- `servers`: lista opcional de servidores para contar jugadores. **No pongas la misma red y sus subservidores a la vez**, ya que produciría duplicados. Si está vacío, se consulta solo `minecraftIp`.
-- `discordGuildId`: ID numérico de Discord. Activa antes el **Widget del servidor** en Ajustes del servidor → Widget (los nombres pueden variar). Si no es compatible, el contador dirá «No disponible».
-- `discordInvite`: enlace público de invitación al Discord.
+- IP de conexión: `berlin.hidenplay.net`
+- Discord ID: `1566195525961785505`
+- Invitación Discord: `https://discord.gg/GJRXZk8jEn`
+- Survival y Box PvP aún están en desarrollo.
+- En la web aparecen todos los apartados, incluyendo el reglamento entero, desplazándose verticalmente. El menú navega por anclas.
+- El primer screenshot se utiliza íntegro en el área de lobby/modalidades, nunca como fondo. Los otros tres alternan de forma suave en la portada, sin segunda animación de salida.
 
-Los datos de Minecraft se consultan en `mcstatus.io` y pueden estar cacheados. En Discord se utiliza el widget público oficial (requiere tenerlo activado). **La web no necesita tokens privados, cuentas de pago ni backend.** Las conexiones del navegador dependen de que las APIs permitan CORS. Si alguna API no responde, muestra un estado neutro, nunca inventa usuarios.
+## Estado de la red
 
-## Editar contenido
+El sitio consulta `mcstatus.io` para verificar la IP principal y cada modalidad pública, y el widget público de Discord para su contador de conectados. La consulta a Discord requiere activar el **widget del servidor** en los ajustes de Discord. Si no está habilitado, se muestra «No disponible».
 
-- `index.html`: portada, modalidades, comunidad y acceso.
-- `reglas.html`: reglamento completo. Se mantiene sin la prohibición del griefing; los demás tipos de sanción y duración respetan las reglas indicadas.
-- `styles.css`: aspecto, animaciones, responsive y movimiento de fondos.
-- `script.js`: navegación, animación por scroll, botón de copiar IP y estado de red.
-- `assets/`: cuatro capturas/imágenes proporcionadas por la comunidad, icono y QR.
+**Dato que todavía no puede resolverse automáticamente:** las direcciones de acceso público de Survival y Box PvP por separado. No existe una API global de Auric Network. En `site-config.js`, `modalities.survival.host` y `modalities.box.host` deben completarse cuando estén disponibles las direcciones o puertos de consulta de cada servidor. **No introducir la IP pública general en ambos campos**: sumaría duplicados. La web nunca inventa cifras: muestra «En desarrollo» hasta que las modalidades estén configuradas, y solo calcula el total al contar ambos servidores.
 
-La primera captura **solo se usa en la sección de modalidades**, no como fondo. Las otras tres imágenes rotan en la portada con desplazamiento horizontal lento; las animaciones se desactivan si el usuario solicita movimiento reducido.
+## Recursos
 
-## Privacidad y seguridad
+- `index.html`: web completa, reglamento incluido.
+- `reglas.html`: redirige enlaces antiguos al reglamento dentro de la página principal.
+- `styles.css`: diseño y animaciones.
+- `script.js`: menú, fondos, copiar IP y estado.
+- `site-config.js`: IP, Discord y direcciones de modalidades cuando estén disponibles.
+- `assets/`: recursos aportados para Berlin Network.
 
-No introduzcas secretos, contraseñas, token de bot o IP de administración en los archivos públicos. GitHub Pages es alojamiento estático. La página solo realiza solicitudes de lectura a servicios públicos.
+No es necesario ejecutar scripts de compilación ni introducir claves.
