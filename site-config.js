@@ -1,18 +1,15 @@
 /* Berlin Network · configuración pública (nunca colocar tokens ni secretos aquí).
-   Se requiere la DIRECCIÓN DE CADA SERVIDOR para contar por modalidad.
-   Los registros Survival y Box PvP están en desarrollo, por eso host=null.
-   Cuando existan dos destinos consultables públicamente, rellenar host:
-   survival: { host: 'direccion-real-de-survival:puerto' },
-   box:      { host: 'direccion-real-de-box:puerto' }
-   No utilizar berlin.hidenplay.net para las dos modalidades: duplicaría jugadores.
+   Las modalidades se consultan mediante direcciones independientes.
+   El total de la red es Survival + Box PvP; la IP general NO se suma.
+   Los servidores aún están en desarrollo y pueden aparecer desconectados.
 */
 window.BERLIN_CONFIG = Object.freeze({
   minecraftIp: 'berlin.hidenplay.net',
   discordGuildId: '1566195525961785505',
   discordInvite: 'https://discord.gg/UeGzQjRebw',
   modalities: {
-    survival: { name: 'Survival', host: null },
-    box: { name: 'Box PvP', host: null }
+    survival: { name: 'Survival', host: 'survival-b.hidenplay.net' },
+    box: { name: 'Box PvP', host: 'boxpvp-b.hidenplay.net' }
   },
   refreshSeconds: 90
 });
